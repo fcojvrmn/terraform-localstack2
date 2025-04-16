@@ -26,13 +26,14 @@ jobs:
           use-light-image: false
           debug: true
 
-      - name: Esperar a que LocalStack esté listo
-        run: |
-          until curl -s http://localhost:4566/_localstack/health | grep '"status": "running"'; do
-            echo "Esperando a que LocalStack esté listo..."
-            sleep 5
-          done
-          echo "LocalStack está listo"
+     - name: Esperar a que LocalStack esté listo
+  run: |
+    until curl -s http://localhost:4566/_localstack/health | grep '"status": "running"'; do
+      echo "Esperando a que LocalStack esté listo..."
+      sleep 5
+    done
+    echo "LocalStack está listo"
+
 
       - name: Terraform Init
         run: terraform init
