@@ -1,17 +1,15 @@
-# Terraform + LocalStack
+# REBASE.md
 
-![Terraform Validate](https://github.com/fcojvrmn/terraform-localstack2/actions/workflows/terraform-validate.yml/badge.svg)
+## Objetivo
+Limpiar el historial de commits en el proyecto de Terraform, reescribiendo los mensajes de los commits y fusionando aquellos que no son necesarios.
 
-Este repositorio contiene una configuración básica de Terraform para trabajar con LocalStack, útil para pruebas locales de servicios AWS simulados.
+## Pasos realizados
 
-## 🛠️ Contenido
+1. Se crearon varios commits con mensajes poco claros para simular un historial desordenado.
+2. Se utilizó el comando `git rebase -i HEAD~N` para editar los últimos N commits.
+3. Se cambiaron los mensajes de los commits utilizando la opción `reword`.
+4. Se fusionaron algunos commits innecesarios usando `squash` o `fixup`.
+5. Se realizó un `git push --force` para actualizar el historial en el repositorio remoto.
 
-- Configuración mínima de Terraform con proveedor AWS apuntando a LocalStack
-- Automatización con GitHub Actions para validar la sintaxis del código Terraform en cada push
-
-## 🚀 Cómo usar
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/fcojvrmn/terraform-localstack2.git
-   cd terraform-localstack2
+## Conclusión
+Este proceso permite mejorar la claridad y calidad del historial de commits en el repositorio, facilitando la comprensión del desarrollo del proyecto y la colaboración entre los miembros del equipo.
