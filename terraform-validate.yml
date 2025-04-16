@@ -3,9 +3,8 @@ name: Terraform Validate
 on:
   push:
     branches:
-      - main
-      - master
-
+      - main  # Cambia 'main' si tu rama principal es 'master'
+      
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -17,7 +16,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.5.7
+          terraform_version: 1.5.7  # Puedes cambiarlo por la versión que estés utilizando
 
       - name: Terraform Init
         run: terraform init
