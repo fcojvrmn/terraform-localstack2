@@ -1,0 +1,36 @@
+name: Terraform Validate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: '1.4.0'  # Ajusta a la versión de Terraform que estés usando
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          curl -fsSL https://github.com/hashicorp/terraform-provider-local/releases/download/v2.0.0/terraform-provider-local_2.0.0_linux_amd64.zip -o terraform-provider-local.zip
+          unzip terraform-provider-local.zip
+          sudo mv terraform-provider-local /usr/local/bin/
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
